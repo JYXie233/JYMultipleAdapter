@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -18,11 +19,11 @@ import java.util.Map;
  * Time: 11:23
  * FIXME
  */
-public abstract class ItemProvider<T extends ItemType> implements OnMultipleItemClickListener, OnMultipleItemLongClickListener{
+public abstract class ItemProvider<M> implements OnMultipleItemClickListener, OnMultipleItemLongClickListener{
 
     private Context mContext;
 
-    private List<T> mDataList;
+    private List<M> mDataList;
 
     private int mStartNum = 0;
 
@@ -89,9 +90,13 @@ public abstract class ItemProvider<T extends ItemType> implements OnMultipleItem
         return false;
     }
 
-    public abstract @LayoutRes int onInflateLayout();
+    public abstract int onInflateLayout();
 
-    public abstract void onBindViewHolder(MultipleViewHolder viewHolder, int position, T item);
+    public abstract void onBindViewHolder(MultipleViewHolder viewHolder, int position, M item);
+
+    public int generateSubType(){
+        return 0;
+    }
 
     public OnMultipleItemClickListener getOnMultipleItemClickListener() {
         return mOnMultipleItemClickListener;
@@ -109,7 +114,7 @@ public abstract class ItemProvider<T extends ItemType> implements OnMultipleItem
         mOnMultipleItemLongClickListener = onMultipleItemLongClickListener;
     }
 
-    public ItemProvider<T> setOnClickViewListener(@IdRes int viewId, OnMultipleItemClickListener listener) {
+    public ItemProvider<M> setOnClickViewListener(int viewId, OnMultipleItemClickListener listener) {
         if (mOnMultipleItemClickListenerMap == null){
             mOnMultipleItemClickListenerMap = new HashMap<>();
         }
@@ -117,7 +122,7 @@ public abstract class ItemProvider<T extends ItemType> implements OnMultipleItem
         return this;
     }
 
-    public ItemProvider<T> setOnLongClickViewListener(@IdRes int viewId, OnMultipleItemLongClickListener listener) {
+    public ItemProvider<M> setOnLongClickViewListener(int viewId, OnMultipleItemLongClickListener listener) {
         if (mOnMultipleItemLongClickListenerMap == null){
             mOnMultipleItemLongClickListenerMap = new HashMap<>();
         }
@@ -126,11 +131,11 @@ public abstract class ItemProvider<T extends ItemType> implements OnMultipleItem
     }
 
 
-    public void add(T itemType) {
+    public void add(M itemType) {
         mDataList.add(itemType);
     }
 
-    public void addAll(List<T> list) {
+    public void addAll(List<M> list) {
         mDataList.addAll(list);
     }
 
@@ -142,7 +147,7 @@ public abstract class ItemProvider<T extends ItemType> implements OnMultipleItem
         mDataList.remove(location);
     }
 
-    public void remove(T itemType) {
+    public void remove(M itemType) {
         mDataList.remove(itemType);
     }
 
@@ -150,10 +155,14 @@ public abstract class ItemProvider<T extends ItemType> implements OnMultipleItem
         return mDataList.size();
     }
 
-    public T get(int position) {
+    public M get(int position) {
         if (position == -1)
             return null;
         return mDataList.get(position);
+    }
+
+    public List<M> getDataList(){
+        return mDataList;
     }
 
     public int getStartNum() {

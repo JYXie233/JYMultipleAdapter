@@ -3,7 +3,6 @@ package com.xjy.demo;
 import android.content.Context;
 
 import com.xjy.jymultipleadapter.ItemProvider;
-import com.xjy.jymultipleadapter.ItemType;
 import com.xjy.jymultipleadapter.MultipleViewHolder;
 
 /**
@@ -12,7 +11,7 @@ import com.xjy.jymultipleadapter.MultipleViewHolder;
  * Time: 15:33
  * FIXME
  */
-public class Item1Provider extends ItemProvider implements ItemType {
+public class Item1Provider extends ItemProvider {
 
     public Item1Provider(Context context) {
         super(context);
@@ -24,17 +23,9 @@ public class Item1Provider extends ItemProvider implements ItemType {
     }
 
     @Override
-    public void onBindViewHolder(MultipleViewHolder viewHolder, int position, ItemType item) {
+    public void onBindViewHolder(MultipleViewHolder viewHolder, int position, Object item) {
 
     }
 
-    @Override
-    public boolean canSwipe() {
-        return false;
-    }
 
-    @Override
-    public boolean canMove() {
-        return false;
-    }
 }

@@ -28,7 +28,7 @@ public class MultipleViewHolder extends RecyclerView.ViewHolder implements View.
         mViews = new SparseArray<View>();
     }
 
-    private <T extends View> T findViewById(@IdRes int viewId) {
+    private <T extends View> T findViewById(int viewId) {
         View view = mViews.get(viewId);
         if (view == null) {
             view = itemView.findViewById(viewId);
@@ -37,19 +37,19 @@ public class MultipleViewHolder extends RecyclerView.ViewHolder implements View.
         return (T) view;
     }
 
-    public MultipleViewHolder setText(@IdRes int viewId, String value) {
+    public MultipleViewHolder setText(int viewId, String value) {
         TextView view = findViewById(viewId);
         view.setText(value);
         return this;
     }
 
-    public MultipleViewHolder setBackground(@IdRes int viewId, int resId) {
+    public MultipleViewHolder setBackground(int viewId, int resId) {
         View view = findViewById(viewId);
         view.setBackgroundResource(resId);
         return this;
     }
 
-    public MultipleViewHolder setClickListener(@IdRes int viewId, final OnMultipleItemClickListener listener) {
+    public MultipleViewHolder setClickListener(int viewId, final OnMultipleItemClickListener listener) {
         View view = findViewById(viewId);
         view.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,7 +60,7 @@ public class MultipleViewHolder extends RecyclerView.ViewHolder implements View.
         return this;
     }
 
-    public MultipleViewHolder setLongClickListener(@IdRes int viewId, final OnMultipleItemLongClickListener listener) {
+    public MultipleViewHolder setLongClickListener(int viewId, final OnMultipleItemLongClickListener listener) {
         View view = findViewById(viewId);
         view.setOnLongClickListener(new View.OnLongClickListener() {
             @Override

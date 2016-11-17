@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
 
     private MultipleAdapter mMultipleAdapter;
 
-
+    Item2Provider item2Creator;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
         mMultipleAdapter.registerCreator(item1Creator);
 
-        final Item2Provider item2Creator = new Item2Provider(this);
+        item2Creator = new Item2Provider(this);
         mMultipleAdapter.registerCreator(Item2.class, item2Creator);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -72,6 +72,41 @@ public class MainActivity extends AppCompatActivity {
                 item2Creator.add(new Item2());
 
                 recyclerView.setAdapter(mMultipleAdapter);
+            }
+        }, 1000);
+    }
+
+    public void onReloadClick(View view){
+        mMultipleAdapter.notifyDataSetChanged();
+    }
+
+    public void onAddClick(View view){
+        Item3Provider item3Provider = new Item3Provider(this);
+        mMultipleAdapter.registerCreator(Item3.class, item3Provider);
+        item3Provider.add(new Item3(1));
+        item3Provider.add(new Item3(2));
+        item3Provider.add(new Item3(3));
+        item3Provider.add(new Item3(4));
+        item3Provider.add(new Item3(5));
+        item3Provider.add(new Item3(6));
+        item3Provider.add(new Item3(7));
+        mMultipleAdapter.notifyDataSetChanged();
+    }
+
+    public void onAddDelayClick(View view){
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+
+                item2Creator.add(new Item2());
+
+                item2Creator.add(new Item2());
+
+                item2Creator.add(new Item2());
+
+                item2Creator.add(new Item2());
+
+                mMultipleAdapter.notifyDataSetChanged();
             }
         }, 1000);
     }
