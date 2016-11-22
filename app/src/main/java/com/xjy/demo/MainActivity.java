@@ -7,11 +7,15 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.xjy.demo.contact.ContactActivity;
 import com.xjy.demo.home.HomeActivity;
+import com.xjy.jymultipleadapter.AbsItemProvider;
+import com.xjy.jymultipleadapter.ItemProvider;
 import com.xjy.jymultipleadapter.MultipleAdapter;
-import com.xjy.jymultipleadapter.OnMultipleItemClickListener;
+import com.xjy.jymultipleadapter.MultipleViewHolder;
+import com.xjy.jymultipleadapter.OnProviderItemClickListener;
 
-public class MainActivity extends AppCompatActivity implements OnMultipleItemClickListener{
+public class MainActivity extends AppCompatActivity implements OnProviderItemClickListener<AbsItemProvider<Model, MultipleViewHolder>> {
 
     private MultipleAdapter mMultipleAdapter;
 
@@ -30,17 +34,19 @@ public class MainActivity extends AppCompatActivity implements OnMultipleItemCli
 
         mMainProvider = new MainProvider();
         mMainProvider.add(new Model("常见首页效果", HomeActivity.class));
+        mMainProvider.add(new Model("联系人效果", ContactActivity.class));
 
         mMultipleAdapter.registerProvider(mMainProvider);
 
         recyclerView.setAdapter(mMultipleAdapter);
 
-        mMainProvider.setOnMultipleItemClickListener(this);
+
+        mMainProvider.setOnProviderClickListener(this);
 
     }
 
     @Override
-    public void onClick(View view, int position) {
+    public void onProviderClick(AbsItemProvider<Model, MultipleViewHolder> provider, View view, int position) {
         Class clazz = mMainProvider.get(position).clazz;
         Intent intent = new Intent(this, clazz);
         startActivity(intent);

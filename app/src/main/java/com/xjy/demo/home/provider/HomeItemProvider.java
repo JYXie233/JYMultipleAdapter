@@ -3,6 +3,7 @@ package com.xjy.demo.home.provider;
 import com.xjy.demo.Model;
 import com.xjy.demo.R;
 import com.xjy.jymultipleadapter.ItemProvider;
+import com.xjy.jymultipleadapter.ItemProviderActionHelper;
 import com.xjy.jymultipleadapter.MultipleViewHolder;
 
 /**
@@ -11,7 +12,7 @@ import com.xjy.jymultipleadapter.MultipleViewHolder;
  * Time: 17:33
  * FIXME
  */
-public class HomeItemProvider extends ItemProvider<Model>{
+public class HomeItemProvider extends ItemProvider<Model> implements ItemProviderActionHelper{
     @Override
     public int onInflateLayout() {
         return R.layout.item_home_item;
@@ -22,4 +23,23 @@ public class HomeItemProvider extends ItemProvider<Model>{
         viewHolder.setText(R.id.textView, item.name);
     }
 
+    @Override
+    public boolean isItemCanSwipe(int position) {
+        return false;
+    }
+
+    @Override
+    public boolean isItemCanMove(int position) {
+        return true;
+    }
+
+    @Override
+    public boolean onItemSwipe(int position) {
+        return false;
+    }
+
+    @Override
+    public boolean onItemMove(int oldPosition, int newPosition) {
+        return false;
+    }
 }

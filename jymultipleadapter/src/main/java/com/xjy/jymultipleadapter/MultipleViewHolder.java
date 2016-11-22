@@ -1,10 +1,12 @@
 package com.xjy.jymultipleadapter;
 
-import android.support.annotation.IdRes;
 import android.support.v7.widget.RecyclerView;
 import android.util.SparseArray;
 import android.view.View;
 import android.widget.TextView;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * User: Tom
@@ -16,10 +18,10 @@ public class MultipleViewHolder extends RecyclerView.ViewHolder implements View.
 
     private SparseArray<View> mViews;
 
-    private OnMultipleItemClickListener mOnMultipleItemClickListener;
+    private OnHolderClickListener mOnHolderClickListener;
+    private OnHolderLongClickListener mOnHolderLongClickListener;
 
-    private OnMultipleItemLongClickListener mOnMultipleItemLongClickListener;
-
+    private boolean isKeep = false;
 
     public MultipleViewHolder(View itemView) {
         super(itemView);
@@ -49,51 +51,72 @@ public class MultipleViewHolder extends RecyclerView.ViewHolder implements View.
         return this;
     }
 
-    public MultipleViewHolder setClickListener(int viewId, final OnMultipleItemClickListener listener) {
+    public MultipleViewHolder setClickListener(int viewId, final OnHolderClickListener onHolderClickListener) {
         View view = findViewById(viewId);
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                listener.onClick(view, MultipleViewHolder.this.getAdapterPosition() );
+                onHolderClickListener.onHolderClick(MultipleViewHolder.this, view);
             }
         });
         return this;
     }
 
-    public MultipleViewHolder setLongClickListener(int viewId, final OnMultipleItemLongClickListener listener) {
+    public MultipleViewHolder setLongClickListener(int viewId, final OnHolderLongClickListener onLongClickListener) {
         View view = findViewById(viewId);
         view.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
-                return listener.onItemLongClick(view, MultipleViewHolder.this.getAdapterPosition());
+                return onLongClickListener.onHolderLongClick(MultipleViewHolder.this, view);
             }
-
         });
         return this;
     }
 
     @Override
     public void onClick(View view) {
-        if (mOnMultipleItemClickListener != null){
-            mOnMultipleItemClickListener.onClick(view, this.getAdapterPosition() );
+        if (mOnHolderClickListener != null){
+            mOnHolderClickListener.onHolderClick(this, view);
         }
-    }
-
-    public void setOnMultipleItemClickListener(OnMultipleItemClickListener onMultipleItemClickListener) {
-        mOnMultipleItemClickListener = onMultipleItemClickListener;
-    }
-
-    public void setOnMultipleItemLongClickListener(OnMultipleItemLongClickListener onMultipleItemLongClickListener) {
-        mOnMultipleItemLongClickListener = onMultipleItemLongClickListener;
     }
 
     @Override
     public boolean onLongClick(View view) {
-        if (mOnMultipleItemLongClickListener != null){
-            return mOnMultipleItemLongClickListener.onItemLongClick(view, getAdapterPosition());
+        if (mOnHolderLongClickListener != null){
+            return mOnHolderLongClickListener.onHolderLongClick(this, view);
         }
         return false;
     }
 
+    public OnHolderClickListener getOnHolderClickListener() {
+        return mOnHolderClickListener;
+    }
 
+    public void setOnHolderClickListener(OnHolderClickListener onHolderClickListener) {
+        mOnHolderClickListener = onHolderClickListener;
+    }
+
+    public OnHolderLongClickListener getOnHolderLongClickListener() {
+        return mOnHolderLongClickListener;
+    }
+
+    public void setOnHolderLongClickListener(OnHolderLongClickListener onHolderLongClickListener) {
+        mOnHolderLongClickListener = onHolderLongClickListener;
+    }
+
+    public interface OnHolderClickListener{
+        void onHolderClick(MultipleViewHolder holder, View childView);
+    }
+
+    public interface OnHolderLongClickListener{
+        boolean onHolderLongClick(MultipleViewHolder holder, View childView);
+    }
+
+    public boolean isKeep() {
+        return isKeep;
+    }
+
+    public void setKeep(boolean keep) {
+        isKeep = keep;
+    }
 }

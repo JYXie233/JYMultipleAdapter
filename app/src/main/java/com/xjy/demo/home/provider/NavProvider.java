@@ -21,4 +21,5 @@ public class NavProvider extends ItemProvider<Model>{
     public void onBindViewHolder(MultipleViewHolder viewHolder, int position, Model item) {
         viewHolder.setText(R.id.textView, item.name);
     }
+
 }

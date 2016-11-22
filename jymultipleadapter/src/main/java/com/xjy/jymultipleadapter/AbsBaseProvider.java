@@ -19,12 +19,15 @@ public abstract class AbsBaseProvider<M,VH extends MultipleViewHolder>{
 
     private int mSpanSize = 1;
 
+    private boolean isKeep = false;
+
     public AbsBaseProvider() {
 
     }
 
     public VH onCreateViewHolder(ViewGroup parent, int viewType) {
         VH multipleViewHolder = (VH) new MultipleViewHolder(LayoutInflater.from(getContext()).inflate(onInflateLayout(), parent, false));
+        multipleViewHolder.setKeep(isKeep());
         return multipleViewHolder;
     }
 
@@ -54,5 +57,13 @@ public abstract class AbsBaseProvider<M,VH extends MultipleViewHolder>{
 
     public void setSpanSize(int spanSize) {
         mSpanSize = spanSize;
+    }
+
+    public boolean isKeep() {
+        return isKeep;
+    }
+
+    public void setKeep(boolean keep) {
+        isKeep = keep;
     }
 }

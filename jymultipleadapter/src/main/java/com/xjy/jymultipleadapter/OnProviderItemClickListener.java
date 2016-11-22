@@ -8,6 +8,6 @@ import android.view.View;
  * Time: 15:19
  * FIXME
  */
-public interface OnMultipleItemClickListener {
-    void onClick(View view, int position);
+public interface OnProviderItemClickListener<T> {
+    void onProviderClick(T provider, View view, int position);
 }  

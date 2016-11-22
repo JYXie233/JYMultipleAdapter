@@ -7,4 +7,6 @@ package com.xjy.jymultipleadapter;
  * FIXME
  */
 public abstract class ItemProvider<M> extends AbsItemProvider<M, MultipleViewHolder>{
-}  
+
+
+}
