@@ -31,8 +31,6 @@ public class ContactActivity extends AppCompatActivity {
 
         multipleAdapter = new MultipleAdapter(this);
 
-//        recyclerView.setLayoutManager(new JYLayoutManager(this));
-
         recyclerView.setAdapter(multipleAdapter);
 
         headerFooterProvider = new AbsHeaderFooterProvider<String>() {
@@ -112,6 +110,23 @@ public class ContactActivity extends AppCompatActivity {
         }).start();
     }
 
+    public class MyHeader extends AbsHeaderFooterProvider<String>{
+
+        @Override
+        public int onInflateLayout() {
+            return 0;
+        }
+
+        @Override
+        public void onBindViewHolder(MultipleViewHolder viewHolder, int position, String item) {
+
+        }
+
+        @Override
+        public boolean isKeep() {
+            return true;
+        }
+    }
 
     private void generateData(int position) {
         ContactProvider contactProvider = new ContactProvider();
