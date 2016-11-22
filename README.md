@@ -104,6 +104,9 @@ public class HomeItemProvider extends ItemProvider<Model> implements ItemProvide
     provider.setSpanSize(4);
     MyHeader header = MyHeader();
     provider.registerHeaderProvider("header", header);
+    //如需使用自己的LayoutManager，请设置setUseDefaultSetting(false);
+    //展开或收起一个Provider, section代表第几个Provider
+    multipleAdapter.toggleExpand(section);
 
 ````
 
