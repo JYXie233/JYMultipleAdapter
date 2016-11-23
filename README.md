@@ -23,7 +23,7 @@ allprojects {
 
 
 ````
-compile 'com.xjy.jymultipleadapter:jymultipleadapter:0.0.3'
+compile 'com.xjy.widget:adapter:0.1.0'
 ````
 
 ## 自定义Provider

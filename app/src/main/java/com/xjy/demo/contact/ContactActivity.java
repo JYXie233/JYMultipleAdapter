@@ -8,12 +8,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.xjy.demo.R;
-import com.xjy.jymultipleadapter.AbsHeaderFooterProvider;
-import com.xjy.jymultipleadapter.AbsItemProvider;
-import com.xjy.jymultipleadapter.ItemProviderActionHelper;
-import com.xjy.jymultipleadapter.MultipleAdapter;
-import com.xjy.jymultipleadapter.MultipleViewHolder;
-import com.xjy.jymultipleadapter.OnProviderItemClickListener;
+import com.xjy.widget.AbsHeaderFooterProvider;
+import com.xjy.widget.AbsItemProvider;
+import com.xjy.widget.ItemProviderActionHelper;
+import com.xjy.widget.MultipleAdapter;
+import com.xjy.widget.MultipleViewHolder;
+import com.xjy.widget.OnProviderItemClickListener;
 
 public class ContactActivity extends AppCompatActivity {
     private AbsHeaderFooterProvider<String> headerFooterProvider;

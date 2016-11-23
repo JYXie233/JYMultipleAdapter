@@ -1,1 +1,1 @@
-include ':app', ':jymultipleadapter'
+include ':app', ':adapter'

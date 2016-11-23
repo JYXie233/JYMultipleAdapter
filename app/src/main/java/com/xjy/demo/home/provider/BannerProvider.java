@@ -1,11 +1,8 @@
 package com.xjy.demo.home.provider;
 
 import com.xjy.demo.R;
-import com.xjy.jymultipleadapter.AbsItemProvider;
-import com.xjy.jymultipleadapter.ItemProvider;
-import com.xjy.jymultipleadapter.MultipleViewHolder;
-
-import java.util.List;
+import com.xjy.widget.ItemProvider;
+import com.xjy.widget.MultipleViewHolder;
 
 /**
  * User: Tom

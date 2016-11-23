@@ -2,9 +2,9 @@ package com.xjy.demo.home.provider;
 
 import com.xjy.demo.Model;
 import com.xjy.demo.R;
-import com.xjy.jymultipleadapter.ItemProvider;
-import com.xjy.jymultipleadapter.ItemProviderActionHelper;
-import com.xjy.jymultipleadapter.MultipleViewHolder;
+import com.xjy.widget.ItemProvider;
+import com.xjy.widget.ItemProviderActionHelper;
+import com.xjy.widget.MultipleViewHolder;
 
 /**
  * User: Tom

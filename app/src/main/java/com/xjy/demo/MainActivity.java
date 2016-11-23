@@ -9,11 +9,10 @@ import android.view.View;
 
 import com.xjy.demo.contact.ContactActivity;
 import com.xjy.demo.home.HomeActivity;
-import com.xjy.jymultipleadapter.AbsItemProvider;
-import com.xjy.jymultipleadapter.ItemProvider;
-import com.xjy.jymultipleadapter.MultipleAdapter;
-import com.xjy.jymultipleadapter.MultipleViewHolder;
-import com.xjy.jymultipleadapter.OnProviderItemClickListener;
+import com.xjy.widget.AbsItemProvider;
+import com.xjy.widget.MultipleAdapter;
+import com.xjy.widget.MultipleViewHolder;
+import com.xjy.widget.OnProviderItemClickListener;
 
 public class MainActivity extends AppCompatActivity implements OnProviderItemClickListener<AbsItemProvider<Model, MultipleViewHolder>> {
 

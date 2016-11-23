@@ -1,11 +1,8 @@
 package com.xjy.demo;
 
-import android.content.Context;
-
-import com.xjy.jymultipleadapter.AbsItemProvider;
-import com.xjy.jymultipleadapter.ItemProvider;
-import com.xjy.jymultipleadapter.ItemProviderActionHelper;
-import com.xjy.jymultipleadapter.MultipleViewHolder;
+import com.xjy.widget.ItemProvider;
+import com.xjy.widget.ItemProviderActionHelper;
+import com.xjy.widget.MultipleViewHolder;
 
 /**
  * User: Tom

@@ -1,9 +1,7 @@
 package com.xjy.demo.home;
 
-import android.nfc.cardemulation.HostNfcFService;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -14,11 +12,11 @@ import com.xjy.demo.R;
 import com.xjy.demo.home.provider.BannerProvider;
 import com.xjy.demo.home.provider.HomeItemProvider;
 import com.xjy.demo.home.provider.NavProvider;
-import com.xjy.jymultipleadapter.AbsHeaderFooterProvider;
-import com.xjy.jymultipleadapter.AbsItemProvider;
-import com.xjy.jymultipleadapter.MultipleAdapter;
-import com.xjy.jymultipleadapter.MultipleViewHolder;
-import com.xjy.jymultipleadapter.OnProviderItemClickListener;
+import com.xjy.widget.AbsHeaderFooterProvider;
+import com.xjy.widget.AbsItemProvider;
+import com.xjy.widget.MultipleAdapter;
+import com.xjy.widget.MultipleViewHolder;
+import com.xjy.widget.OnProviderItemClickListener;
 
 public class HomeActivity extends AppCompatActivity {
 
